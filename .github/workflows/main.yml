@@ -14,5 +14,10 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
+# generate tag linked to commit number
+
     - name: Build docker image
       run: docker build -t evandrolugli/devops-golang:latest .
+
+# 1. log in container register
+# 2. send image
