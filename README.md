@@ -1,11 +1,25 @@
-### DevOps
-
-Technology: Go
-Version: 1.22.4
-Port: 8080
-Database: Postgres
-
 ### Steps
+
+1. Get project info
+    * Technology: Go
+    * Version: 1.22.4
+    * Port: 8080
+    * Database: Postgres
+2. Test: run
+3. Test: build
+4. Test: run bin (binary)
+5. Create Dockerfile
+    * Test: create image
+    * Test: create container
+6. Create docker-compose.yml
+7. Run YML file
+    * note: image created
+    * note: container created
+    * note: containers up
+8. Create github YML (main.yml)
+
+
+### How it works
 
 Local:
     - prepare (installing dependencies)
@@ -18,31 +32,24 @@ Production:
 
 ### Commands
 
->> go mod download && go mod verify     (installing dependencies)
->> go run cmd/journey/journey.go        (run application - from go run)
->> go build cmd/journey/journey.go      (build application)
->> ./journey                            (run application - from binary)
+- installing dependencies			>> go mod download && go mod verify
+- run application (from go run)		>> go run cmd/journey/journey.go
+- build application					>> go build cmd/journey/journey.go
+- run application (from binary)		>> ./journey
 
 ### Docker Commands
 
+- create image						>> docker build -t nlw-journey-go-main:v1 .
+- create image, no cache			>> docker build --no-cache -t <nlw-journey-go-main:v1> .
+- list image						>> docker image ls
+- run the container					>> docker run -d -p 8080:8080 nlw-journey-go-main:v2
+- list container up					>> docker ps
+- list container					>> docker ps -a
+- check logs						>> docker logs 284841de58fc
+- run yml file						>> docker-compose up --build -d
+- remove image					    >> docker rmi <image_id>
+- remove container					>> docker rm <container_id>
+- stop container only if is up 		>> docker stop api-db
+- clear build cache 				>> docker builder prune
 
->> docker build -t nlw-journey-go-main:v1 .         (build the image)
->> docker image ls                                  (list image)
-
->> docker run -d -p 8080:8080 nlw-journey-go:v2     (run the container)
-
->> docker ps                    (list container up)
->> docker ps -a                 (list container)
->> docker logs 284841de58fc     (check logs)
-
->> docker-compose up --build -d                         (-d: release terminal)
-
-1. >> docker image ls                                           (list image)
-2. >> docker rmi <image_id>                                     (remove)
-3. >> docker builder prune                                      (clear build cache)
-4. >> docker build --no-cache -t <nlw-journey-go-main:v1> .     (create image)
-
-1. >> docker ps -a                  (list container)
-2. >> docker stop api-db            (stop container only if is up)
-3. >> docker rm <container_id>      (remove)
 
