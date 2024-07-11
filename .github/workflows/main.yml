@@ -25,11 +25,12 @@ jobs:
       with: 
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
-        
+
     - name: Build docker image
       run: docker build -t evandrolugli/devops-golang:${{ steps.generate_sha.outputs.sha }} .
 
-
-
-# 1. log in container register
-# 2. send image
+    - name: Push image
+      run: |
+        docker push evandrolugli/devops-golang:${{ steps.generate_sha.outputs.sha }}
+        docker tag evandrolugli/devops-golang:${{ steps.generate_sha.outputs.sha }} evandrolugli/devops-golang:latest
+        docker push evandrolugli/devops-golang:latest
