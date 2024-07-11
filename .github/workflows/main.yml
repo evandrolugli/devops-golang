@@ -14,10 +14,14 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
-# generate tag linked to commit number
+    - name: Generate SHA
+      id: generate_sha
+      run: |
+        SHA=$(echo $GITHUB_SHA | head -c7)
+        echo "sha=$SHA" >> $GITHUB_OUTPUT
 
     - name: Build docker image
-      run: docker build -t evandrolugli/devops-golang:latest .
+      run: docker build -t evandrolugli/devops-golang:${{ steps.generate_sha.outputs.sha }} .
 
 # 1. log in container register
 # 2. send image
