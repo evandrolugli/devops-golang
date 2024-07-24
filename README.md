@@ -1,5 +1,8 @@
-### Steps
+# Technology
+- go (language)
+- docker
 
+# Coding
 1. Get project info
     * Technology: Go
     * Version: 1.22.4
@@ -18,8 +21,7 @@
     * note: containers up
 8. Create github YML (main.yml)
 
-### How it works
-
+# How it works
 Local:
     - prepare (installing dependencies)
     - execute (run application, using 'go run')
@@ -29,14 +31,14 @@ Production:
     - build
     - execute (run application, using binary from build)
 
-### Commands
+# Commands
 
 - installing dependencies			>> go mod download && go mod verify
 - run application (from go run)		>> go run cmd/journey/journey.go
 - build application					>> go build cmd/journey/journey.go
 - run application (from binary)		>> ./journey
 
-### Docker Commands
+# Docker Commands
 
 - create image						>> docker build -t nlw-journey-go-main:v1 .
 - create image, no cache			>> docker build --no-cache -t <nlw-journey-go-main:v1> .
