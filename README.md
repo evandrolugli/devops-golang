@@ -1,8 +1,8 @@
-# Technology
+## Technology
 - go (language)
 - docker
 
-# Coding
+## Coding
 1. Get project info
     * Technology: Go
     * Version: 1.22.4
@@ -15,13 +15,14 @@
     * Test: create image
     * Test: create container
 6. Create docker-compose.yml
+    * set up database
 7. Run YML file
     * note: image created
     * note: container created
     * note: containers up
 8. Create github YML (main.yml)
 
-# How it works
+## How it works
 Local:
     - prepare (installing dependencies)
     - execute (run application, using 'go run')
@@ -31,15 +32,12 @@ Production:
     - build
     - execute (run application, using binary from build)
 
-# Commands
-
 - installing dependencies			>> go mod download && go mod verify
 - run application (from go run)		>> go run cmd/journey/journey.go
 - build application					>> go build cmd/journey/journey.go
 - run application (from binary)		>> ./journey
 
-# Docker Commands
-
+## Docker Commands
 - create image						>> docker build -t nlw-journey-go-main:v1 .
 - create image, no cache			>> docker build --no-cache -t <nlw-journey-go-main:v1> .
 - list image						>> docker image ls
@@ -53,3 +51,8 @@ Production:
 - stop container only if is up 		>> docker stop api-db
 - clear build cache 				>> docker builder prune
 
+
+## Fail
+- curl http://localhost:8080/trips/1
+- Docker logs ...
+    failed to connect to `user=root database=journey`
